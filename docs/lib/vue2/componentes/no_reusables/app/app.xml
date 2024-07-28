@@ -1,0 +1,4 @@
+<div id="app">
+    <mis-dialogos />
+    <pagina-de-inicio></pagina-de-inicio>
+</div>

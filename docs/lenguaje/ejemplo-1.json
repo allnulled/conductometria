@@ -1,0 +1,1057 @@
+[
+    {
+        "tipo": "sentencia de definición",
+        "fenomeno": "estar bien",
+        "nombre": null,
+        "subtipo": "objetivo",
+        "composicion": [
+            {
+                "polaridad": "+",
+                "efectividad": 1,
+                "fenomeno": "estar bien físicamente"
+            },
+            {
+                "polaridad": "+",
+                "efectividad": 1,
+                "fenomeno": "estar bien psicológicamente"
+            }
+        ]
+    },
+    {
+        "tipo": "sentencia de modalidad",
+        "titulo": "módulo de creencias 1",
+        "sentencias": [
+            {
+                "tipo": "sentencia de definición",
+                "fenomeno": "estar bien psicológicamente",
+                "nombre": null,
+                "subtipo": null,
+                "composicion": [
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "tener esto"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "tener aquello"
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "tipo": "sentencia de modalidad",
+        "titulo": "etapa 1",
+        "sentencias": [
+            {
+                "tipo": "sentencia de uso de módulo",
+                "modulo": "módulo de creencias 1"
+            },
+            {
+                "tipo": "sentencia de uso de módulo",
+                "modulo": "módulo de creencias 2"
+            },
+            {
+                "tipo": "sentencia de definición",
+                "fenomeno": "estar bien físicamente",
+                "nombre": null,
+                "subtipo": "objetivo",
+                "composicion": [
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "hacer ejercicios de espalda"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "hacer ejercicios de cuello"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "hacer ejercicios de hombros"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "hacer ejercicios de brazos"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "hacer ejercicios de piernas"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "hacer ejercicios de abdomen"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "hacer ejercicios de pecho"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "salir a caminar o correr"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "desayunar equilibradamente"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "comer equilibradamente"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "cenar equilibradamente"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "meditar"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "dar de comer al perrillo"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "dar de comer al gatillo"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "sacar a pasear al perrillo"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "fumar"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "tomar cafeína"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "masturbarse"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "comer mal"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "hablar demasiado"
+                    }
+                ]
+            },
+            {
+                "tipo": "sentencia de definición",
+                "fenomeno": "estar bien psicológicamente",
+                "nombre": null,
+                "subtipo": "objetivo",
+                "composicion": [
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "planear el día"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "reflexionar"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "meditar"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "observar"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "leer"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "escribir preguntas o respuestas"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "agradecer"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "perdonar"
+                    },
+                    {
+                        "polaridad": "+",
+                        "efectividad": 1,
+                        "fenomeno": "cumplir los objetivos del día"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "quejarse"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "fruncir el ceño"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "tener negatividad"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "ver la televisión"
+                    },
+                    {
+                        "polaridad": "-",
+                        "efectividad": 1,
+                        "fenomeno": "usar redes sociales"
+                    }
+                ]
+            },
+            {
+                "tipo": "sentencia de datos",
+                "computable": false,
+                "identificador": "2024/07/21 - Plan A",
+                "eventos": [
+                    {
+                        "hora": "5:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "desayunar equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "6:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "sacar a pasear al perrillo"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "7:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "8:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "hacer ejercicios de brazos"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "8:15",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "hacer ejercicios de espalda"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "8:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "observar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "9:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "leer"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "10:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "hacer ejercicios de hombros"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "10:15",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "hacer ejercicios de pecho"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "10:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "11:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "reflexionar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "12:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "escribir preguntas o respuestas"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "13:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "comer equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "14:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "16:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "reflexionar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "17:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "escribir preguntar o respuestas"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "19:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "sacar a pasear al perrillo"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "20:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "perdonar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "20:45",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "agradecer"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "21:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "cenar equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "22:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "planear el día"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "23:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "6",
+                            "minutos": "30"
+                        }
+                    }
+                ]
+            },
+            {
+                "tipo": "sentencia de datos",
+                "computable": false,
+                "identificador": "2024/07/21 - Plan B",
+                "eventos": [
+                    {
+                        "hora": "5:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "desayunar equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "6:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "sacar a pasear al perrillo"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "7:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "9:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "reflexionar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "11:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "escribir preguntas o respuestas"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "13:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "comer equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "14:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "16:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "reflexionar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "18:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "escribir preguntas o respuestas"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "20:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "sacar a pasear al perrillo"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "21:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "cenar equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "22:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "perdonar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "22:15",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "agradecer"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "22:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "escribir preguntas o respuestas"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "23:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "planear el día"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "23:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "6",
+                            "minutos": "30"
+                        }
+                    }
+                ]
+            },
+            {
+                "tipo": "sentencia de datos",
+                "computable": false,
+                "identificador": "2024/07/21 - Plan C",
+                "eventos": [
+                    {
+                        "hora": "5:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "desayunar equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "6:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "sacar a pasear al perrillo"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "7:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "9:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "reflexionar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "11:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "13:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "reflexionar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "15:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "17:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "reflexionar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "2",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "19:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "sacar a pasear al perrillo"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "20:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "21:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "cenar equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "22:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "perdonar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "22:15",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "agradecer"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": null,
+                            "minutos": "15"
+                        }
+                    },
+                    {
+                        "hora": "23:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "meditar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "6",
+                            "minutos": "30"
+                        }
+                    }
+                ]
+            },
+            {
+                "tipo": "sentencia de datos",
+                "computable": true,
+                "identificador": "2024/07/21 - Real",
+                "eventos": [
+                    {
+                        "hora": "7:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "desayunar"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": true,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "8:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "sacar a pasear al perrillo"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": true,
+                            "horas": null,
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "9:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "comprar boquillas"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": true,
+                            "horas": null,
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "10:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "coche al taller"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": true,
+                            "horas": "3",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "13:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "comer equilibradamente"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": true,
+                            "horas": "1",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "14:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "planear el día"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "0",
+                            "minutos": null
+                        }
+                    },
+                    {
+                        "hora": "16:00",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "ir al supermercado"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "1",
+                            "minutos": "30"
+                        }
+                    },
+                    {
+                        "hora": "17:30",
+                        "fenomenos": {
+                            "fenomenos": [
+                                "x"
+                            ]
+                        },
+                        "tiempo": {
+                            "completado": false,
+                            "horas": "0",
+                            "minutos": null
+                        }
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "tipo": "sentencia de modalidad",
+        "titulo": "etapa 2",
+        "sentencias": []
+    }
+]

@@ -1,0 +1,273 @@
+<div>
+    <mi-title style="position: relative; text-align: center; padding: 3px;">Conductometría <a href="github.com/allnulled/conductometria"><span style="color: #BBB; position: absolute; bottom: 0px; right: 0px; font-size: 9px;float: right;">Versión 1.0.0</span></a></mi-title>
+    <section class="tabs">
+        <menu role="tab-list" style="margin:0px;padding:0px;">
+            <div style="display:table;width:100%;">
+                <div style="display:table-cell;width:50%;padding:2px;" role="tab">
+                    <button class="" :class="{active: seccion_seleccionada === 'Script'}" style="width:100%;" v-on:click="() => seleccionar_seccion('Script')">Lógica</button>
+                </div>
+                <div style="display:table-cell;width:50%;padding:2px;" role="tab">
+                    <button class="" :class="{active: seccion_seleccionada === 'Estadísticas'}" style="width:100%;" v-on:click="() => seleccionar_seccion('Estadísticas')" :disabled="!es_script_valido">Estadísticas</button>
+                </div>
+            </div>
+        </menu>
+        <article>
+            <div role="tabpanel" class="pestania_tipo_1" v-show="seccion_seleccionada === 'Script'">
+                <mi-subtitle v-on:click="() => $refs.editor_de_script.click()">{{ $t("Lógica") }} <span style="float:right; color: yellow;">Día: {{ pasar_date_a_objeto(hoy) }}</span></mi-subtitle>
+                <table class="tabla_de_dia_de_semana">
+                    <tbody>
+                        <tr>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 1}">Lunes</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 2}">Martes</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 3}">Miércoles</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 4}">Jueves</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 5}">Viernes</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 6}">Sábado</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 0}">Domingo</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="seccion pestania_tipo_scrollable">
+                    <textarea ref="editor_de_script" :class="{con_error_gramatical:error_de_script_abierto,pendiente_de_validar:esta_script_pendiente_de_validacion}" class="editor_de_codigo" placeholder="Pon aquí el script. Lenguaje en allnulled/conductometria" v-model="script_abierto" v-on:input="guardar_script_con_dilacion" spellcheck="false"></textarea>
+                    <div v-if="error_de_script_abierto">
+                        <mi-subtitle>Error gramatical</mi-subtitle>
+                        <pre class="caja_de_error">{{ JSON.stringify(error_de_script_abierto, null, 2) }}</pre>
+                    </div>
+                </div>
+            </div>
+            <div role="tabpanel" class="pestania_tipo_1" v-if="seccion_seleccionada === 'Estadísticas'">
+                <mi-subtitle>{{ $t("Estadísticas") }} <span style="float:right; color: yellow;">Día: {{ pasar_date_a_objeto(hoy) }}</span></mi-subtitle>
+                <table class="tabla_de_dia_de_semana">
+                    <tbody>
+                        <tr>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 1}">Lunes</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 2}">Martes</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 3}">Miércoles</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 4}">Jueves</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 5}">Viernes</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 6}">Sábado</td>
+                            <td class="celda_de_dia_de_semana" :class="{activo: hoy.getDay() === 0}">Domingo</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="seccion">
+                    <!--pre class="editor_de_codigo" style="font-size:9px;overflow:scroll;">{{ datos_de_estadisticas }}</pre-->
+                    <div class="">
+                        <div class="lista_de_botones">
+                            <template v-for="tipo_de_dato, tipo_de_dato_index in tipos_de_dato">
+                                <div v-bind:key="'boton_para_tipo_de_dato_' + tipo_de_dato_index" class="capa_de_boton_de_lista">
+                                    <button class="boton_de_lista" :class="{active: panel_de_estadisticas_seleccionado === tipo_de_dato, boton_verde: tipo_de_dato === 'acciones', boton_rojo: tipo_de_dato === 'alertas'}" v-on:click="() => alternar_estadistica_panel(tipo_de_dato)">
+                                    {{ capitalizar_texto(tipo_de_dato) }}
+                                    </button>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div v-if="panel_de_estadisticas_seleccionado === 'alertas'">
+                        <mi-subtitle>Alertas</mi-subtitle>
+                        <menu role="tab-list" style="margin:0px;padding:0px;">
+                            <div style="display:table;width:100%;">
+                                <div style="display:table-cell;width:50%;padding:2px;" role="tab">
+                                    <button class="" :class="{active: seccion_de_alertas_seleccionada === 'Actuales'}" style="width:100%;" v-on:click="() => seleccionar_seccion_de_alerta('Actuales')">Actuales</button>
+                                </div>
+                                <div style="display:table-cell;width:50%;padding:2px;" role="tab">
+                                    <button class="" :class="{active: seccion_de_alertas_seleccionada === 'Definidas'}" style="width:100%;" v-on:click="() => seleccionar_seccion_de_alerta('Definidas')" :disabled="!es_script_valido">Definidas</button>
+                                </div>
+                            </div>
+                        </menu>
+                        <div v-if="seccion_de_alertas_seleccionada === 'Definidas'">
+                            <mi-subtitle>Definidas</mi-subtitle>
+                            <div class="pestania_tipo_scrollable" style="padding-top: 2px;">
+                                <template v-for="alerta_de_estadistica, alerta_de_estadistica_index, alerta_de_estadistica_counter in datos_de_estadisticas.global.estadisticas.alertas">
+                                    <div v-bind:key="'panel_para_alerta_de_estadistica_' + alerta_de_estadistica_counter">
+                                        <div class="window minimizable clickable" :class="{minimized: alertas_de_estadisticas_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index) === -1}">
+                                            <div class="title-bar" v-on:click="() => alternar_estadistica_alerta_minimaximizar(alerta_de_estadistica_index)">
+                                                <div class="title-bar-text">
+                                                    {{ capitalizar_texto(alerta_de_estadistica_index) }}  ({{ datos_de_estadisticas.global.estadisticas.datos[alerta_de_estadistica_index].sumatorio_total }})
+                                                </div>
+                                                <div class="title-bar-controls">
+                                                    <button aria-label="Minimize" v-if="alertas_de_estadisticas_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index) !== -1"></button>
+                                                    <button aria-label="Maximize" v-else=""></button>
+                                                </div>
+                                            </div>
+                                            <template v-if="alertas_de_estadisticas_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index) !== -1">
+                                                <div class="window-body has-space" v-if="datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites">
+                                                    <!--pre>{{ datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites }}</pre-->
+                                                    <div class="capa_de_sumatorio">
+                                                        <template v-for="limite, limite_index, limite_counter in datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites">
+                                                            <div class="item_de_sumatorio" :class="{espacio_superior: limite_index !== 0}">
+                                                                <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.actual">
+                                                                    <div style="display: table; width: 100%;">
+                                                                        <span class="celda_del_estado" style="display:table-cell; white-space: nowrap; text-align: right;" :class="{fondo_verde: limite.actual.estado === 'ok', fondo_rojo: limite.actual.estado !== 'ok'}"><b>Estado: </b>{{ limite.actual.estado }}</span>
+                                                                        <span style="display:table-cell; width:100%;"></span>
+                                                                        <span class="celda_del_total" style="display:table-cell; white-space: nowrap; text-align: right;"><b>Total: </b>{{ limite.actual.total }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;">
+                                                                    <div style="display: table; width: 100%;">
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: left;"><b>Intervalo: </b>{{ limite.actual.inicio_en_texto }}</span>
+                                                                        <span style="display:table-cell; width:100%;"></span>
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Límite: </b> {{ limite.actual.fin_en_texto }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.cada">
+                                                                    <div style="display: table; width: 100%;">
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: left;" v-if="limite.cada"><b>Cada: </b>{{ pasar_cantidad_de_tiempo_de_objeto_a_texto(limite.cada) }}</span>
+                                                                        <span style="display:table-cell; width:100%;"></span>
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.limite.limite"><b>{{ capitalizar_texto(limite.limite.limite) }}: </b>{{ pasar_cantidad_de_tiempo_de_objeto_a_texto(limite.limite.cantidad) }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item_de_sumatorio_titulo" v-if="limite.desde">
+                                                                    <div style="display: table; width: 100%;">
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: left;" v-if="limite.desde"><b>Desde: </b> {{ pasar_fecha_de_objeto_a_texto(limite.desde) }}</span>
+                                                                        <span style="display:table-cell; width:100%;"></span>
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Hasta: </b> {{ pasar_fecha_de_objeto_a_texto(limite.hasta) }}</span>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </template>
+                                                    </div>
+                                                </div>
+                                            </template>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                        <div v-if="seccion_de_alertas_seleccionada === 'Actuales'">
+                            <mi-subtitle>Actuales</mi-subtitle>
+                            <div class="pestania_tipo_scrollable" style="padding-top: 2px;">
+                                <template v-for="alerta_de_estadistica, alerta_de_estadistica_index, alerta_de_estadistica_counter in datos_de_estadisticas.global.estadisticas.alertas">
+                                    <div v-bind:key="'panel_para_alerta_de_estadistica_' + alerta_de_estadistica_counter">
+                                        <div v-for="limite, limite_index in datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites" v-bind:key="'alerta_' + alerta_de_estadistica_counter + '_limite_' + limite_index">
+                                            <div class="window minimizable clickable" :class="{ventana_verde: limite.actual.estado.startsWith('ok'), ventana_roja: limite.actual.estado.startsWith('faltan') || limite.actual.estado.startsWith('sobran'), minimized: alertas_de_estadisticas_actuales_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index + ':' + limite_index) === -1}">
+                                                <div class="title-bar" v-on:click="() => alternar_estadistica_alerta_actual_minimaximizar(alerta_de_estadistica_index + ':' + limite_index)">
+                                                    <div class="title-bar-text">
+                                                        <span>{{ capitalizar_texto(alerta_de_estadistica_index) }} ({{ limite.actual.estado }})</span>
+                                                    </div>
+                                                    <div class="title-bar-controls">
+                                                        <button aria-label="Minimize" v-if="alertas_de_estadisticas_actuales_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index + ':' + limite_index) !== -1"></button>
+                                                        <button aria-label="Maximize" v-else=""></button>
+                                                    </div>
+                                                </div>
+                                                <template v-if="alertas_de_estadisticas_actuales_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index + ':' + limite_index) !== -1">
+                                                    <div class="window-body" v-if="datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites">
+                                                        <!--pre>{{ datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites }}</pre-->
+                                                        <div class="capa_de_sumatorio">
+                                                            <template>
+                                                                <div class="item_de_sumatorio">
+                                                                    <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.cada">
+                                                                        <div style="display: table; width: 100%;">
+                                                                            <span class="celda_del_estado" style="display:table-cell; white-space: nowrap; text-align: right;" :class="{fondo_verde: limite.actual.estado === 'ok', fondo_rojo: limite.actual.estado !== 'ok'}"><b>Estado: </b>{{ limite.actual.estado }}</span>
+                                                                            <span style="display:table-cell; width:100%;"></span>
+                                                                            <span class="celda_del_total" style="display:table-cell; white-space: nowrap; text-align: right;"><b>Total: </b>{{ limite.actual.total }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;">
+                                                                        <div style="display: table; width: 100%;">
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: left;"><b>Intervalo: </b>{{ limite.actual.inicio_en_texto }}</span>
+                                                                            <span style="display:table-cell; width:100%;"></span>
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Límite: </b> {{ limite.actual.fin_en_texto }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.cada">
+                                                                        <div style="display: table; width: 100%;">
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: left;" v-if="limite.cada"><b>Cada: </b>{{ pasar_cantidad_de_tiempo_de_objeto_a_texto(limite.cada) }}</span>
+                                                                            <span style="display:table-cell; width:100%;"></span>
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.limite.limite"><b>{{ capitalizar_texto(limite.limite.limite) }}: </b>{{ pasar_cantidad_de_tiempo_de_objeto_a_texto(limite.limite.cantidad) }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item_de_sumatorio_titulo" v-if="limite.desde">
+                                                                        <div style="display: table; width: 100%;">
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: left;" v-if="limite.desde"><b>Desde: </b> {{ pasar_fecha_de_objeto_a_texto(limite.desde) }}</span>
+                                                                            <span style="display:table-cell; width:100%;"></span>
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Hasta: </b> {{ pasar_fecha_de_objeto_a_texto(limite.hasta) }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </template>
+                                                        </div>
+                                                    </div>
+                                                </template>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-else-if="panel_de_estadisticas_seleccionado === 'acciones'">
+                        <mi-subtitle>Acciones</mi-subtitle>
+                        <div class="pestania_tipo_scrollable" style="padding-top: 2px;">
+                            <template v-for="dato_de_estadistica, dato_de_estadistica_index, dato_de_estadistica_counter in datos_de_estadisticas.global.estadisticas.datos_ordenados_alfabeticamente">
+                                <div v-bind:key="'panel_para_dato_de_estadistica_' + dato_de_estadistica_counter">
+                                    <div class="window minimizable ventana_verde clickable" :class="{minimized: acciones_de_estadisticas_mostrandose_maximizadas.indexOf(dato_de_estadistica_index) === -1}">
+                                        <div class="title-bar" v-on:click="() => alternar_estadistica_accion_minimaximizar(dato_de_estadistica_index)">
+                                            <div class="title-bar-text">
+                                                {{ capitalizar_texto(dato_de_estadistica_index) }}  ({{ datos_de_estadisticas.global.estadisticas.datos[dato_de_estadistica_index].sumatorio_total }})
+                                            </div>
+                                            <div class="title-bar-controls">
+                                                <button aria-label="Minimize" v-if="acciones_de_estadisticas_mostrandose_maximizadas.indexOf(dato_de_estadistica_index) !== -1"></button>
+                                                <button aria-label="Maximize" v-else=""></button>
+                                            </div>
+                                        </div>
+                                        <template v-if="acciones_de_estadisticas_mostrandose_maximizadas.indexOf(dato_de_estadistica_index) !== -1">
+                                            <div class="window-body has-space capa_de_sumatorio">
+                                                <div class="" style="text-align: right; padding: 4px;">
+                                                    <div class=""><span class="celda_del_total"><b>Total:</b> {{ datos_de_estadisticas.global.estadisticas.datos[dato_de_estadistica_index].sumatorio_total }}</span></div>
+                                                </div>
+                                                <div class="item_de_sumatorio espacio_superior" v-for="item_sumatorio, item_sumatorio_index in datos_de_estadisticas.global.estadisticas.datos[dato_de_estadistica_index].sumatorio">
+                                                    <div class="item_de_sumatorio_titulo"><b>Eventos:</b> <u class="nombre_de_fenomeno">{{ item_sumatorio.fenomenos.fenomenos.join(", ") }}</u></div>
+                                                    <div class="item_de_sumatorio_contratitulo" style="text-align: center;">
+                                                        <span>{{ pasar_fecha_de_objeto_a_texto(item_sumatorio.fecha.fecha) }} {{ pasar_hora_de_objeto_a_texto(item_sumatorio.hora) }}</span>
+                                                        <span> durante {{ pasar_cantidad_de_tiempo_de_objeto_a_texto(item_sumatorio.cantidad.cantidad) }}</span>
+                                                    </div>
+                                                    <!--div class="item_de_sumatorio_titulo"><span><b>Duración:</b> {{ pasar_cantidad_de_tiempo_de_objeto_a_texto(item_sumatorio.cantidad.cantidad) }}</span></div-->
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                    <div v-else-if="typeof(panel_de_estadisticas_seleccionado) === 'string'">
+                        <mi-subtitle>{{ capitalizar_texto(panel_de_estadisticas_seleccionado) }}</mi-subtitle>
+                        <div class="pestania_tipo_scrollable" style="padding-top: 2px;">
+                            <template v-for="dato_de_estadistica, dato_de_estadistica_index, dato_de_estadistica_counter in datos_de_estadisticas.global.estadisticas.datos_ordenados_alfabeticamente">
+                                <div v-if="(dato_de_estadistica_index in datos_de_estadisticas.global.definiciones) && (datos_de_estadisticas.global.definiciones[dato_de_estadistica_index].subtipo === panel_de_estadisticas_seleccionado)" v-bind:key="'panel_para_dato_tipo_de_dato_' + panel_de_estadisticas_seleccionado + '_de_estadistica_' + dato_de_estadistica_counter">
+                                    <div class="window minimizable clickable" :class="{minimized: acciones_de_estadisticas_mostrandose_maximizadas.indexOf(dato_de_estadistica_index) === -1}">
+                                        <div class="title-bar" v-on:click="() => alternar_estadistica_accion_minimaximizar(dato_de_estadistica_index)">
+                                            <div class="title-bar-text">
+                                                {{ capitalizar_texto(dato_de_estadistica_index) }} ({{ datos_de_estadisticas.global.estadisticas.datos[dato_de_estadistica_index].sumatorio_total }})
+                                            </div>
+                                            <div class="title-bar-controls">
+                                                <button aria-label="Minimize" v-if="acciones_de_estadisticas_mostrandose_maximizadas.indexOf(dato_de_estadistica_index) !== -1"></button>
+                                                <button aria-label="Maximize" v-else=""></button>
+                                            </div>
+                                        </div>
+                                        <template v-if="acciones_de_estadisticas_mostrandose_maximizadas.indexOf(dato_de_estadistica_index) !== -1">
+                                            <div class="window-body has-space capa_de_sumatorio">
+                                                <div class="" style="text-align: right; padding: 4px;">
+                                                    <div class=""><span class="celda_del_total"><b>Total:</b> {{ datos_de_estadisticas.global.estadisticas.datos[dato_de_estadistica_index].sumatorio_total }}</span></div>
+                                                </div>
+                                                <div class="item_de_sumatorio espacio_superior" v-for="item_sumatorio, item_sumatorio_index in datos_de_estadisticas.global.estadisticas.datos[dato_de_estadistica_index].sumatorio" v-bind:key="'panel_para_dato_tipo_de_dato_' + panel_de_estadisticas_seleccionado + '_de_estadistica_' + dato_de_estadistica_counter + '_de_dato_' + dato_de_estadistica_counter + '_item_de_sumatorio_' + item_sumatorio_index">
+                                                    <div class="item_de_sumatorio_titulo"><u class="nombre_de_fenomeno">{{ item_sumatorio.fenomenos.fenomenos.map(f => capitalizar_texto(f)).join(", ") }}</u></div>
+                                                    <div class="item_de_sumatorio_contratitulo" style="text-align: center;">
+                                                        <span>{{ pasar_fecha_de_objeto_a_texto(item_sumatorio.fecha.fecha) }} {{ pasar_hora_de_objeto_a_texto(item_sumatorio.hora) }}</span>
+                                                        <span> durante {{ pasar_cantidad_de_tiempo_de_objeto_a_texto(item_sumatorio.cantidad.cantidad) }}</span>
+                                                    </div>
+                                                    <!--div class="item_de_sumatorio_titulo"><span><b>Duración:</b> {{ pasar_cantidad_de_tiempo_de_objeto_a_texto(item_sumatorio.cantidad.cantidad) }}</span></div-->
+                                                </div>
+                                            </div>
+                                        </template>
+                                    </div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>

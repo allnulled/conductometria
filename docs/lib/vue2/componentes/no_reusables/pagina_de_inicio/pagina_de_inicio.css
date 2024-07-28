@@ -1,0 +1,207 @@
+textarea.editor_de_codigo,
+pre.editor_de_codigo {
+    width: 100%;
+    height: 100%;
+    resize: vertical;
+    font-size: 10px;
+    font-family: monospace;
+    padding: 3px 4px 5px;
+    min-height: 730px;
+    height: 730px;
+    border: 1px solid #CCC;
+
+    white-space: pre;
+    overflow-wrap: normal;
+    overflow-x: scroll;
+}
+
+input[type="text"].caja_de_codigo {
+    width: 100%;
+    height: 100%;
+    font-size: 10px;
+    font-family: monospace;
+    padding: 3px 4px 5px;
+}
+.pestania_tipo_1 {
+    padding: 0px;
+    border: none;
+    background: transparent;
+}
+.pestania_tipo_scrollable {
+    padding-right: 40px;
+}
+
+pre.caja_de_error {
+    background-color:rgb(123, 27, 27);
+    color: yellow;
+    font-family: monospace;
+    border: 3px double yellow;
+    font-size: 9px;
+    padding: 4px;
+    border-radius: 2pt;
+    overflow: scroll;
+    max-height: 180px;
+    resize: vertical;
+}
+textarea.editor_de_codigo.pendiente_de_validar {
+    background-color: rgb(220, 215, 173) !important;
+    border: 1px solid rgb(172, 127, 24);
+}
+textarea.editor_de_codigo.con_error_gramatical {
+    background-color: rgb(227, 204, 204);
+    border: 1px solid red;
+}
+.lista_de_botones {
+    padding-left: 2px;
+    padding-bottom: 2px;
+}
+.boton_de_lista {
+    
+}
+.capa_de_boton_de_lista {
+    display: inline-block;
+    padding: 2px;
+    padding-left: 0px;
+    padding-bottom: 0px;
+}
+
+button {
+    cursor: pointer;
+}
+.window.minimizable {
+    margin-bottom: 2px;
+}
+.window.minimizable.clickable .title-bar {
+    cursor: pointer;
+}
+.window.minimized {
+    border-radius: 4pt 4pt 4pt 4pt;
+    margin-bottom: 2px;
+}
+.window.minimized .title-bar {
+    border-radius: 4pt 4pt 4pt 4pt;
+}
+.window.ventana_verde .title-bar {
+    background: linear-gradient(90deg,#fff6,#0000001a,#fff3),#5bc445 !important;
+}
+.window.ventana_verde::before {
+    background: linear-gradient(transparent 20%,#ffffffb3 40%,transparent 41%),linear-gradient(90deg,#fff6,#0000001a,#fff3),#61c445 !important;
+}
+.window.ventana_roja .title-bar {
+    background: linear-gradient(90deg,#fff6,#0000001a,#fff3),#c44545 !important;
+}
+.window.ventana_roja::before {
+    background: linear-gradient(transparent 20%,#ffffffb3 40%,transparent 41%),linear-gradient(90deg,#fff6,#0000001a,#fff3),#c44545 !important;
+}
+.consola_de_codigo {
+    font-size: 10px;
+    color: #0F0;
+    background-color: black;
+    font-family: Arial;
+}
+
+.capa_de_sumatorio {
+    /*background-color: #000;*/
+}
+.item_de_sumatorio {
+    border: 1px solid #CCC;
+    border-radius: 2pt;
+    box-shadow: 0 0 4pt black;
+}
+.item_de_sumatorio.espacio_superior {
+    margin-top: 8px;
+}
+.item_de_sumatorio_contratitulo {
+    background-color: rgb(182, 182, 182);
+    background-color: rgb(255, 255, 255);
+    color: #212528;
+}
+.item_de_sumatorio_titulo {
+    font-weight: normal;
+    padding: 6px;
+    font-size: 12px;
+    text-align: center;
+    background-color: #212528;
+    color: white;
+    text-shadow: 0 0 1px #333;
+}
+.item_de_sumatorio_titulo.total_sumatorio {
+    background-color: #bd544f;
+}
+.item_de_sumatorio_titulo .nombre_de_fenomeno {
+    color: yellow;
+}
+.item_de_sumatorio_cabecera {
+    padding: 6px;
+    font-weight: bold;
+}
+
+button.boton_verde {
+    background: linear-gradient(180deg,#ecfce5,#cff6c4 30% 50%,#b3ef98 50%,#91db68) !important;
+}
+button.boton_verde::after,
+button.boton_verde::before,
+button.boton_verde:hover {
+    background: linear-gradient(180deg,#ecfce5,#cff6c4 30% 50%,#b3ef98 50%,#6fe430) !important;
+}
+button.boton_rojo {
+    background: linear-gradient(180deg,#fce5e5,#f6c4c4 30% 50%,#ef9898 50%,#db6868) !important;
+}
+button.boton_rojo::after,
+button.boton_rojo::before,
+button.boton_rojo:hover {
+    background: linear-gradient(180deg,#fce5e5,#f6c4c4 30% 50%,#ef9898 50%,#d63f3f) !important;
+}
+button.boton_amarillo {
+    background: linear-gradient(180deg,#ecfce5,#cff6c4 30% 50%,#ebef98 50%,#d5db68) !important;
+}
+button.boton_amarillo::after,
+button.boton_amarillo::before,
+button.boton_amarillo:hover {
+    background: linear-gradient(180deg,#ecfce5,#cff6c4 30% 50%,#efe998 50%,#d2e430) !important;
+}
+
+.tabla_de_dia_de_semana {
+    width: 100%;
+    border-collapse: collapse;
+    min-height: 40px;
+    margin-top: 2px;
+}
+.celda_de_dia_de_semana {
+    width: 14.28%;
+    text-align: center;
+    vertical-align: middle;
+    padding: 4px;
+    height: 100%;
+    border: 1px solid black;
+    background-color: #334;
+    color: white;
+    font-size: 9px;
+}
+.celda_de_dia_de_semana.activo {
+    background-color: yellow;
+    color: black;
+    font-weight: bold;
+}
+
+.celda_del_total {
+    background-color: yellow;
+    color: black;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 2pt;
+}
+.celda_del_estado {
+    background-color: white;
+    color: black;
+    padding: 5px;
+    border: 1px solid #333;
+    border-radius: 2pt;
+}
+
+.fondo_verde {
+    background: linear-gradient(180deg,#ecfce5,#cff6c4 30% 50%,#b3ef98 50%,#91db68) !important;
+}
+.fondo_rojo {
+    background: linear-gradient(180deg,#fce5e5,#f6c4c4 30% 50%,#ef9898 50%,#db6868) !important;
+}
