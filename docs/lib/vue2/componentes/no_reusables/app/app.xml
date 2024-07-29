@@ -1,6 +1,6 @@
 <div id="app">
     <mis-dialogos />
-    <div id="capa_global">
+    <div id="capa_global_solo_maximo">
         <pagina-de-inicio></pagina-de-inicio>
     </div>
 </div>

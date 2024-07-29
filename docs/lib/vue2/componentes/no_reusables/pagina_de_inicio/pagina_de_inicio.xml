@@ -1,6 +1,6 @@
 <div>
     <mi-title style="position: relative; text-align: center; padding: 12px;">Conductometría <a href="github.com/allnulled/conductometria"><span style="color: #BBB; position: absolute; bottom: 0px; right: 0px; font-size: 9px;float: right;">Versión 1.0.0</span></a></mi-title>
-    <section class="tabs">
+    <section class="tabs" id="capa_global">
         <menu role="tab-list" style="margin:0px;padding:0px;">
             <div style="display:table;width:100%;">
                 <div style="display:table-cell;width:50%;padding:2px;" role="tab">
