@@ -83,7 +83,8 @@
                                         <div class="window minimizable clickable" :class="{minimized: alertas_de_estadisticas_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index) === -1}">
                                             <div class="title-bar" v-on:click="() => alternar_estadistica_alerta_minimaximizar(alerta_de_estadistica_index)">
                                                 <div class="title-bar-text">
-                                                    {{ capitalizar_texto(alerta_de_estadistica_index) }}  ({{ datos_de_estadisticas.global.estadisticas.datos[alerta_de_estadistica_index].sumatorio_total }})
+                                                    {{ capitalizar_texto(alerta_de_estadistica_index) }} <span v-if="alerta_de_estadistica_index in datos_de_estadisticas.global.estadisticas.datos"> ({{ datos_de_estadisticas.global.estadisticas.datos[alerta_de_estadistica_index].sumatorio_total }})</span>
+                                                     <span v-else> (por empezar)</span>
                                                 </div>
                                                 <div class="title-bar-controls">
                                                     <button aria-label="Minimize" v-if="alertas_de_estadisticas_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index) !== -1"></button>
@@ -91,10 +92,10 @@
                                                 </div>
                                             </div>
                                             <template v-if="alertas_de_estadisticas_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index) !== -1">
-                                                <div class="window-body has-space" v-if="datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites">
-                                                    <!--pre>{{ datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites }}</pre-->
+                                                <div class="window-body has-space" v-if="alerta_de_estadistica.limites">
+                                                    <!--pre>{{ alerta_de_estadistica.limites }}</pre-->
                                                     <div class="capa_de_sumatorio">
-                                                        <template v-for="limite, limite_index, limite_counter in datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites">
+                                                        <template v-for="limite, limite_index, limite_counter in alerta_de_estadistica.limites">
                                                             <div class="item_de_sumatorio" :class="{espacio_superior: limite_index !== 0}">
                                                                 <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.actual">
                                                                     <div style="display: table; width: 100%;">
@@ -103,11 +104,25 @@
                                                                         <span class="celda_del_total" style="display:table-cell; white-space: nowrap; text-align: right;"><b>Total: </b>{{ limite.actual.total }}</span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;">
+                                                                <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-else>
+                                                                    <div style="display: table; width: 100%;">
+                                                                        <span class="celda_del_estado" style="display:table-cell; white-space: nowrap; text-align: right;"><b>Estado: </b>por empezar</span>
+                                                                        <span style="display:table-cell; width:100%;"></span>
+                                                                        <span class="celda_del_total" style="display:table-cell; white-space: nowrap; text-align: right;"><b>Total: </b>0min</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;" v-if="limite.actual">
                                                                     <div style="display: table; width: 100%;">
                                                                         <span style="display:table-cell; white-space: nowrap; text-align: left;"><b>Intervalo: </b>{{ limite.actual.inicio_en_texto }}</span>
                                                                         <span style="display:table-cell; width:100%;"></span>
                                                                         <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Límite: </b> {{ limite.actual.fin_en_texto }}</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;" v-else>
+                                                                    <div style="display: table; width: 100%;">
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: left;"><b>Intervalo: </b>no calculado</span>
+                                                                        <span style="display:table-cell; width:100%;"></span>
+                                                                        <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Límite: </b> no calculado</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.cada">
@@ -127,6 +142,9 @@
                                                             </div>
                                                         </template>
                                                     </div>
+                                                    <div v-else>
+                                                        <span>No hay hechos asociados a este fenómeno actualmente.</span>
+                                                    </div>
                                                 </div>
                                             </template>
                                         </div>
@@ -139,11 +157,14 @@
                             <div class="pestania_tipo_scrollable" style="padding-top: 2px;">
                                 <template v-for="alerta_de_estadistica, alerta_de_estadistica_index, alerta_de_estadistica_counter in datos_de_estadisticas.global.estadisticas.alertas">
                                     <div v-bind:key="'panel_para_alerta_de_estadistica_' + alerta_de_estadistica_counter">
-                                        <div v-for="limite, limite_index in datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites" v-bind:key="'alerta_' + alerta_de_estadistica_counter + '_limite_' + limite_index">
-                                            <div class="window minimizable clickable" :class="{ventana_verde: limite.actual.estado.startsWith('ok'), ventana_roja: limite.actual.estado.startsWith('faltan') || limite.actual.estado.startsWith('sobran'), minimized: alertas_de_estadisticas_actuales_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index + ':' + limite_index) === -1}">
+                                        <div v-for="limite, limite_index in alerta_de_estadistica.limites" v-bind:key="'alerta_' + alerta_de_estadistica_counter + '_limite_' + limite_index">
+                                            <div v-if="true" class="window minimizable clickable" :class="{ventana_verde: limite.actual && limite.actual.estado.startsWith('ok'), ventana_roja: !limite.actual || (limite.actual && !limite.actual.estado.startsWith('ok')), minimized: alertas_de_estadisticas_actuales_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index + ':' + limite_index) === -1}">
                                                 <div class="title-bar" v-on:click="() => alternar_estadistica_alerta_actual_minimaximizar(alerta_de_estadistica_index + ':' + limite_index)">
                                                     <div class="title-bar-text">
-                                                        <span>{{ capitalizar_texto(alerta_de_estadistica_index) }} ({{ limite.actual.estado }})</span>
+                                                        <span>{{ capitalizar_texto(alerta_de_estadistica_index) }}
+                                                            <span v-if="limite && limite.actual">({{ limite.actual.estado }})</span>
+                                                            <span v-else>({{ limite.limite.limite === 'mínimo' ? 'faltan' : 'sobran' }} {{ pasar_cantidad_de_tiempo_de_objeto_a_texto(limite.limite.cantidad) }})</span>
+                                                        </span>
                                                     </div>
                                                     <div class="title-bar-controls">
                                                         <button aria-label="Minimize" v-if="alertas_de_estadisticas_actuales_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index + ':' + limite_index) !== -1"></button>
@@ -151,23 +172,37 @@
                                                     </div>
                                                 </div>
                                                 <template v-if="alertas_de_estadisticas_actuales_mostrandose_maximizadas.indexOf(alerta_de_estadistica_index + ':' + limite_index) !== -1">
-                                                    <div class="window-body" v-if="datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites">
+                                                    <div class="window-body">
                                                         <!--pre>{{ datos_de_estadisticas.global.definiciones[alerta_de_estadistica_index].limites }}</pre-->
                                                         <div class="capa_de_sumatorio">
                                                             <template>
                                                                 <div class="item_de_sumatorio">
-                                                                    <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.cada">
+                                                                    <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.cada && limite.actual">
                                                                         <div style="display: table; width: 100%;">
                                                                             <span class="celda_del_estado" style="display:table-cell; white-space: nowrap; text-align: right;" :class="{fondo_verde: limite.actual.estado === 'ok', fondo_rojo: limite.actual.estado !== 'ok'}"><b>Estado: </b>{{ limite.actual.estado }}</span>
                                                                             <span style="display:table-cell; width:100%;"></span>
                                                                             <span class="celda_del_total" style="display:table-cell; white-space: nowrap; text-align: right;"><b>Total: </b>{{ limite.actual.total }}</span>
                                                                         </div>
                                                                     </div>
-                                                                    <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;">
+                                                                    <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-else>
+                                                                        <div style="display: table; width: 100%;">
+                                                                            <span class="celda_del_estado" style="display:table-cell; white-space: nowrap; text-align: right;" :class="{fondo_rojo: true}"><b>Estado: </b>{{ limite.limite.limite === 'mínimo' ? 'faltan' : 'sobran' }}  {{ pasar_cantidad_de_tiempo_de_objeto_a_texto(limite.limite.cantidad) }}</span>
+                                                                            <span style="display:table-cell; width:100%;"></span>
+                                                                            <span class="celda_del_total" style="display:table-cell; white-space: nowrap; text-align: right;"><b>Total: </b>0min</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;" v-if="limite.actual">
                                                                         <div style="display: table; width: 100%;">
                                                                             <span style="display:table-cell; white-space: nowrap; text-align: left;"><b>Intervalo: </b>{{ limite.actual.inicio_en_texto }}</span>
                                                                             <span style="display:table-cell; width:100%;"></span>
                                                                             <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Límite: </b> {{ limite.actual.fin_en_texto }}</span>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="item_de_sumatorio_titulo" style="text-align: center; padding: 4px;" v-else>
+                                                                        <div style="display: table; width: 100%;">
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: left;"><b>Intervalo: </b> (inicia la tarea antes)</span>
+                                                                            <span style="display:table-cell; width:100%;"></span>
+                                                                            <span style="display:table-cell; white-space: nowrap; text-align: right;" v-if="limite.hasta"><b>Límite: </b> (inicia la tarea antes)</span>
                                                                         </div>
                                                                     </div>
                                                                     <div class="item_de_sumatorio_contratitulo" style="text-align: center; padding: 4px;" v-if="limite.cada">

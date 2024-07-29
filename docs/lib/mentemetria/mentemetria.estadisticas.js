@@ -83,9 +83,11 @@
       const definicion = estado.global.definiciones[fenomeno_definido];
       const causales = definicion.causales;
       // Si el fenómeno propagado está entre los causales de la definición
-      if (causales.indexOf(fenomeno_propagado) !== -1) {
-        // Entonces propagamos este fenómeno también
-        framework.utilidades.propagar_causas(definicion.fenomeno, horas, evento, sentencia, estado);
+      if(causales) {
+        if (causales.indexOf(fenomeno_propagado) !== -1) {
+          // Entonces propagamos este fenómeno también
+          framework.utilidades.propagar_causas(definicion.fenomeno, horas, evento, sentencia, estado);
+        }
       }
     }
   };
@@ -317,6 +319,9 @@
     const { inicio, fin } = ultimo_intervalo;
     console.log("inicio:", inicio);
     console.log("fin:", fin);
+    if(!(definicion.fenomeno in estado.global.estadisticas.datos)) {
+      return;
+    }
     const dato_de_estadistica = estado.global.estadisticas.datos[definicion.fenomeno];
     const eventos = dato_de_estadistica.sumatorio;
     for(let i1=0; i1<eventos.length; i1++) {
@@ -414,11 +419,15 @@
       // Si tiene limites definidos:
       if (definicion.limites) {
         estado.global.estadisticas.alertas[definicion_id] = definicion;
+        Procesando_limites:
         for (let i2 = 0; i2 < definicion.limites.length; i2++) {
           const limite = definicion.limites[i2];
           const { desde, hasta, cada } = limite;
           console.log(desde, hasta, cada);
           const datos_intervalo = framework.utilidades.calcular_tiempo_dedicado_en_ultimo_intervalo(estado, definicion, limite);
+          if(!datos_intervalo) {
+            continue Procesando_limites;
+          }
           datos_intervalo.inicio_en_texto = framework.utilidades.pasar_date_a_objeto(datos_intervalo.inicio);
           datos_intervalo.fin_en_texto = framework.utilidades.pasar_date_a_objeto(datos_intervalo.fin);
           console.log(datos_intervalo);
