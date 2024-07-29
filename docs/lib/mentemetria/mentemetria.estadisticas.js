@@ -91,19 +91,18 @@
   };
 
   framework.utilidades.evaluar_modalidad = function (sentencia, estado) {
-    for (let index_subsentencia = 0; index_subsentencia < sentencia.sentencias.length; index_subsentencia++) {
-      const subsentencia = sentencia.sentencias[index_subsentencia];
-      framework.utilidades.evaluar_sentencia(subsentencia, estado);
-    }
+    estado.global.modulos[sentencia.titulo] = sentencia;
   };
 
   framework.utilidades.evaluar_uso_de_modulo = function (sentencia, estado) {
-    const conceptos = Object.keys(estado.global.definiciones);
-    for (let i1 = 0; i1 < conceptos.length; i1++) {
-      const concepto = conceptos[i1];
-      const definicion = estado.global.definiciones[concepto];
-      const subtipo = definicion.subtipo;
-
+    if(!(sentencia.modulo in estado.global.modulos)) {
+      console.log(sentencia);
+      throw new Error("No se ha encontrado módulo «" + sentencia.modulo + "» entre los definidos «" + Object.keys(estado.global.modulos).join("», «") + "»");
+    }
+    const sentencias_de_modulo = estado.global.modulos[sentencia.modulo].sentencias;
+    for (let index_subsentencia = 0; index_subsentencia < sentencias_de_modulo.length; index_subsentencia++) {
+      const subsentencia = sentencias_de_modulo[index_subsentencia];
+      framework.utilidades.evaluar_sentencia(subsentencia, estado);
     }
   };
 
@@ -435,6 +434,7 @@
       global: {
         definiciones: {},
         datos: [],
+        modulos: {},
         estadisticas: {
           datos: {},
           tipos: {}

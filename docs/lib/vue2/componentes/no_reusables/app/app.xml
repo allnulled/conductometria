@@ -1,4 +1,6 @@
 <div id="app">
     <mis-dialogos />
-    <pagina-de-inicio></pagina-de-inicio>
+    <div id="capa_global">
+        <pagina-de-inicio></pagina-de-inicio>
+    </div>
 </div>

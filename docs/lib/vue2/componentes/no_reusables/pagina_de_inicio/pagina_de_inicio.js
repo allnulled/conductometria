@@ -136,6 +136,12 @@ return await Sistema_de_modulos.definir_componente_vue2(
         this.datos_de_estadisticas = window.mentemetria_estadisticas.extraer_estadisticas_de_ast(ast);
         this.tipos_de_dato = ["alertas", "acciones"].concat(Object.keys(this.datos_de_estadisticas.global.definiciones).reduce((output, item, index) => {
           const subtipo = this.datos_de_estadisticas.global.definiciones[item].subtipo;
+          if(typeof subtipo !== "string") {
+            return output;
+          }
+          if(subtipo === "") {
+            return output;
+          }
           if(output.indexOf(subtipo) === -1) {
             output.push(subtipo);
           }

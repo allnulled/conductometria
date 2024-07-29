@@ -1,6 +1,24 @@
+html {
+    background-color: #FFF;
+}
 #app {
     padding: 2px;
+    text-align: center;
+    padding-top: 0px;
 }
 * {
     box-sizing: border-box;
+}
+#capa_global {
+    display: inline-block;
+    width: 100%;
+    max-width: 800px;
+    text-align: left;
+    /*
+    background-color: white;
+    border-left: 1px solid #333;
+    border-right: 1px solid #333;
+    border-bottom: 1px solid #333;
+    */
+
 }

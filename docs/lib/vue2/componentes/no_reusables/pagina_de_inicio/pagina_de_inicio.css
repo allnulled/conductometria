@@ -136,6 +136,11 @@ button {
     font-weight: bold;
 }
 
+button.boton_grande {
+    min-height: 35px;
+    font-size: 12px;
+}
+
 button.boton_verde {
     background: linear-gradient(180deg,#ecfce5,#cff6c4 30% 50%,#b3ef98 50%,#91db68) !important;
 }
