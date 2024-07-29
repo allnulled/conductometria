@@ -8,11 +8,12 @@ Sentencia_de_modulo = _* "módulo" _*
     sentencias:Sentencia_tipica_completa* _* Clave_curvada_cierre
         { return { tipo: "sentencia de modalidad", titulo, sentencias } }
 
-No_EOL = (!(EOL) .)* { return text() }
-No_EOS = (!(EOS) .)* { return text() }
+No_EOL = (!(EOL) .)* { return text().trim() }
+No_EOS = (!(EOS) .)* { return text().trim() }
 
-Sentencia_de_uso_de_modulo = _* Token_usar _* modulo:No_EOS { return {tipo: "sentencia de uso de módulo", modulo } }
+Sentencia_de_uso_de_modulo = _* Token_usar Token_modulo? _* modulo:No_EOS { return {tipo: "sentencia de uso de módulo", modulo } }
 Token_usar = "usar"
+Token_modulo = _* "módulo" 
 
 Sentencia_de_datos =
     fecha:Fecha_negable ( Token_consiste_en / Token_igual )
